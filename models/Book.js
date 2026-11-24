@@ -7,3 +7,7 @@ const bookSchema = new mongoose.Schema({
   publishedDate: { type: Date },
   inStock: { type: Boolean, default: true },
 });
+
+// Compile this schema into a model named Book and export it
+const Book = mongoose.model("Book", bookSchema);
+module.exports = Book;
