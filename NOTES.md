@@ -8,7 +8,11 @@
 - **`ReferenceError: exoress is not defined`** was a misspelled name. The error gives file, line and character (`server.js:7:9`).
 - **No "Server running" message:** something was off on the `app.listen` line. The message needs backticks (`` ` ``) for `${PORT}` to work.
 - **`Cannot POST /api/books`** (an HTML page, not JSON) means Express found no matching route. Usually I forgot to restart the server after saving (Ctrl + C, then `node server.js`). Node only reads files when it starts.
-- **"Path `title` is required" AND "Path `author` is required"** at the same time means the server got an *empty body*. My code was fine, so it was a Postman setting: Body → **raw** → **JSON** (not Text). Also keep `app.use(express.json())` *above* the routes.
+- **"Path `title` is required" AND "Path `author` is required"** at the same time means the server got an *empty body*. My code was fine; the problem was in Postman.
+  - How I found it: I added `console.log('BODY RECEIVED:', req.body)` in the route, and it printed `undefined`. That meant `express.json()` skipped the request.
+  - Postman's hidden Headers showed **Content-Length: 0**, so the body really was empty, and no Content-Type was sent.
+  - **Fix:** Body tab → select **raw** (not none) → paste the JSON → dropdown on **JSON** → Send.
+  - Lesson: when stuck, `console.log` what actually arrives instead of guessing.
 
 ## New terms
 
