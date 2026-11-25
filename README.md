@@ -75,3 +75,14 @@ I send a 200 with a confirmation message _and_ the deleted book. The message con
 - Testing every endpoint in Postman, including the "not found" cases
 - Debugging by checking what actually arrives: an empty request body turned out to be Postman's Body set to "none," which I found by logging `req.body` and seeing Content-Length 0
 - A 200 status doesn't always mean it worked; I check the data that comes back
+
+## Time to complete
+About **3 hours** of hands-on work over 2 sessions (Nov 24-25, 2026), compared with an estimated 2 hours 40 minutes:
+
+| Phase | Time |
+|---|---|
+| Setup, Git and GitHub (including fixing a stray home-folder Git repo) | ~45 min |
+| Express server + MongoDB Atlas connection | ~35 min |
+| Book schema + model | ~10 min |
+| CRUD routes + Postman testing (most debugging happened here) | ~1 hr 15 min |
+| Full test run + README | ~15 min |
